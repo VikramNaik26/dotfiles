@@ -23,6 +23,5 @@ vim.api.nvim_set_keymap("n", "<leader>k", ":wincmd k<CR>", { noremap = true, sil
 vim.api.nvim_set_keymap("n", "<leader>l", ":wincmd l<CR>", { noremap = true, silent = true })
 
 -- Key mappings for moving lines up and down
-vim.api.nvim_set_keymap('v', 'J', ':m .+1<CR>==', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'K', ':m .-2<CR>==', { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap("v", "J", ":m .+1<CR>==", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "K", ":m .-2<CR>==", { noremap = true, silent = true })

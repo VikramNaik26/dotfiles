@@ -43,8 +43,12 @@ return {
 			})
 			lspconfig.html.setup({
 				capabilities = capabilities,
+				filetypes = { "html", "typescriptreact", "javascriptreact" },
 			})
 			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.cssls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.tailwindcss.setup({
@@ -55,6 +59,12 @@ return {
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "<leader>vrn", function()
+				vim.lsp.buf.rename()
+			end, opts, { desc = "LSP Rename" })
+			vim.keymap.set("i", "<C-h>", function()
+				vim.lsp.buf.signature_help()
+			end, opts, { desc = "LSP Signature Help" })
 		end,
 	},
 }

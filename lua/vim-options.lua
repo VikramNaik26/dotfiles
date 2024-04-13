@@ -25,3 +25,10 @@ vim.api.nvim_set_keymap("n", "<leader>l", ":wincmd l<CR>", { noremap = true, sil
 -- Key mappings for moving lines up and down
 vim.api.nvim_set_keymap("v", "J", ":m .+1<CR>==", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "K", ":m .-2<CR>==", { noremap = true, silent = true })
+
+-- tabline customization
+vim.cmd("highlight! HarpoonInactive guibg=NONE guifg=#63698c")
+vim.cmd("highlight! HarpoonActive guibg=NONE guifg=white")
+vim.cmd("highlight! HarpoonNumberActive guibg=NONE guifg=#7aa2f7")
+vim.cmd("highlight! HarpoonNumberInactive guibg=NONE guifg=#7aa2f7")
+vim.cmd("highlight! TabLineFill guibg=NONE guifg=white")

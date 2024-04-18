@@ -135,6 +135,7 @@ return {
         "bashls",
         "marksman",
         "cucumber_language_server",
+        "prismals",
         -- "solargraph",
       },
       handlers = {

@@ -7,6 +7,7 @@ vim.g.mapleader = " "
 vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true, silent = true })
 
 vim.opt.relativenumber = true
+vim.wo.number = true
 -- vim.api.nvim_set_keymap("v", "<leader>c", ':lua require("comment").comment()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>w", ":wa<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>q", ":q<CR>", { noremap = true, silent = true })

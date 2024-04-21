@@ -9,10 +9,10 @@ return {
     vim.keymap.set("n", "<leader>b", mark.rm_file, { desc = "Harpoon: Unmark File" })
     vim.keymap.set("n", "<C-h>", ui.toggle_quick_menu, { desc = "Toggle Harpoon Menu" })
 
-    vim.keymap.set("n", "<leader>hn", function()
+    vim.keymap.set("n", "<leader>tn", function()
       ui.nav_next()
     end, { desc = "Harpoon: Next File" })
-    vim.keymap.set("n", "<leader>hp", function()
+    vim.keymap.set("n", "<leader>tp", function()
       ui.nav_prev()
     end, { desc = "Harpoon: Previous File" })
     vim.keymap.set("n", "<C-t>", function()

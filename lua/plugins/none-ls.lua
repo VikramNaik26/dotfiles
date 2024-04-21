@@ -6,6 +6,12 @@ return {
   config = function()
     local null_ls = require("null-ls")
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    vim.diagnostic.config({
+      virtual_text = false,
+      signs = true,
+    })
+    vim.o.updatetime = 250
+    vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.stylua,

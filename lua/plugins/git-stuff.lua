@@ -10,7 +10,8 @@ return {
 				vim.fn.execute(':Git commit -m "' .. commit_message .. '"')
 			end
 
-			vim.keymap.set("n", "<leader>gcm", ":lua git_commit_with_message()<CR>", {})
+			vim.keymap.set("n", "<leader>gcu", ":lua git_commit_with_message()<CR>", {})
+			vim.keymap.set("n", "<leader>gcm", ":Git commit<CR>", {})
 		end,
 	},
 	{

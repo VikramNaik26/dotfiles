@@ -36,8 +36,8 @@ return {
 						horizontal = {
 							preview_width = 80,
 							size = {
-								width = "80%",
-								height = "80%",
+								width = "0.8",
+								height = "0.8",
 							},
 						},
 					},

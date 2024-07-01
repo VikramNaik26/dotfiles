@@ -187,6 +187,7 @@ return {
         { name = "luasnip", keyword_length = 2 },
         { name = "buffer",  keyword_length = 3 },
         { name = "path" },
+        { name = "codeium" },
       },
       mapping = cmp.mapping.preset.insert({
         ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),

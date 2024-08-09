@@ -37,3 +37,21 @@ vim.cmd("highlight! TabLineFill guibg=NONE guifg=white")
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+local function setup_autopairs()
+  -- Auto-close quotes
+  vim.api.nvim_set_keymap('i', '"', '""<Left>', { noremap = true })
+  vim.api.nvim_set_keymap('i', "'", "''<Left>", { noremap = true })
+
+  -- Auto-close brackets
+  vim.api.nvim_set_keymap('i', '(', '()<Left>', { noremap = true })
+  vim.api.nvim_set_keymap('i', '[', '[]<Left>', { noremap = true })
+  vim.api.nvim_set_keymap('i', '{', '{}<Left>', { noremap = true })
+
+  -- Auto-close braces with new line
+  vim.api.nvim_set_keymap('i', '{<CR>', '{<CR>}<ESC>O', { noremap = true })
+  vim.api.nvim_set_keymap('i', '{;<CR>', '{<CR>};<ESC>O', { noremap = true })
+end
+
+-- Call the function to set up the mappings
+setup_autopairs()

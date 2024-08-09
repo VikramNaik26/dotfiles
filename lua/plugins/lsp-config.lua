@@ -42,7 +42,7 @@ return {
         })
       end,
     }, -- Required
-    { -- Optional
+    {  -- Optional
       "williamboman/mason.nvim",
       config = function()
         require("mason").setup()
@@ -56,9 +56,9 @@ return {
     }, -- Optional
 
     -- Autocompletion
-    { "hrsh7th/nvim-cmp" },   -- Required
+    { "hrsh7th/nvim-cmp" },     -- Required
     { "hrsh7th/cmp-nvim-lsp" }, -- Required
-    { "L3MON4D3/LuaSnip" },   -- Required
+    { "L3MON4D3/LuaSnip" },     -- Required
     { "rafamadriz/friendly-snippets" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
@@ -193,7 +193,7 @@ return {
         ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
         ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-c>"] = cmp.mapping.complete(),
         ["<C-f>"] = cmp_action.luasnip_jump_forward(),
         ["<C-b>"] = cmp_action.luasnip_jump_backward(),
         ["<Tab>"] = cmp_action.luasnip_supertab(),

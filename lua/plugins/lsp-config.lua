@@ -40,6 +40,56 @@ return {
         lspconfig.tailwindcss.setup({
           capabilities = capabilities,
         })
+        lspconfig.jdtls.setup({
+          cmd = { 'C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/bin/jdtls.bat' },
+          capabilities = capabilities,
+          init_options = {
+            jvm_args = {
+              '-Dlog.level=ALL',
+              '-Dlog.protocol=true',
+              '-configuration', 'C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/config_win',
+              '-javaagent:C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/lombok.jar',
+              '-Xbootclasspath/a:C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/lombok.jar'
+            },
+            settings = {
+              java = {
+                codeGeneration = {
+                  useBlocks = true,
+                },
+                configuration = {
+                  runtimes = {
+                    {
+                      name = "JavaSE-22",
+                      path = "C:/Users/26vik/Downloads/jdk-22_windows-x64_bin/jdk-22.0.2",
+                    },
+                  },
+                },
+              },
+            },
+          }
+        })
+
+        -- -- java
+        -- lspconfig.jdtls.setup({
+        --   capabilities = capabilities,
+        --   cmd = {
+        --     'java',
+        --     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        --     '-Dosgi.bundles.defaultStartLevel=4',
+        --     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        --     '-Dlog.protocol=true',
+        --     '-Dlog.level=ALL',
+        --     '-Xms1g',
+        --     '--add-modules=ALL-SYSTEM',
+        --     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        --     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        --     '-jar',
+        --     'C:/Users/YourUsername/AppData/Local/nvim-data/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar',
+        --     '-configuration', 'C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/config_win',
+        --     '-data', 'C:/Users/26vik/.cache/jdtls-workspace',
+        --     '-javaagent:C:/Users/26vik/.config/nvim/lombok.jar',
+        --   },
+        -- })
       end,
     }, -- Required
     {  -- Optional
@@ -54,7 +104,7 @@ return {
         auto_install = true,
       },
     }, -- Optional
-
+    { "mfussenegger/nvim-jdtls" },
     -- Autocompletion
     { "hrsh7th/nvim-cmp" },     -- Required
     { "hrsh7th/cmp-nvim-lsp" }, -- Required
@@ -64,6 +114,7 @@ return {
     { "hrsh7th/cmp-path" },
     { "hrsh7th/cmp-cmdline" },
     { "saadparwaiz1/cmp_luasnip" },
+    { "nvim-telescope/telescope.nvim" },
   },
   config = function()
     local lsp = require("lsp-zero")
@@ -72,8 +123,8 @@ return {
       local opts = { buffer = bufnr, remap = false }
 
       vim.keymap.set("n", "gr", function()
-        vim.lsp.buf.references()
-      end, opts, { desc = "LSP Goto Reference" })
+        require('telescope.builtin').lsp_references()
+      end, opts, { desc = "LSP Goto Reference (Telescope)" })
 
       vim.keymap.set("n", "gd", function()
         vim.lsp.buf.definition()
@@ -88,8 +139,8 @@ return {
       end, opts, { desc = "LSP Workspace Symbol" })
 
       vim.keymap.set("n", "<leader>vd", function()
-        vim.diagnostic.setloclist()
-      end, opts, { desc = "LSP Show Diagnostics" })
+        require('telescope.builtin').diagnostics()
+      end, opts, { desc = "LSP Show Diagnostics (Telescope)" })
 
       vim.keymap.set("n", "[d", function()
         vim.diagnostic.goto_next()
@@ -104,8 +155,9 @@ return {
       end, opts, { desc = "LSP Code Action" })
 
       vim.keymap.set("n", "<leader>vrr", function()
-        vim.lsp.buf.references()
-      end, opts, { desc = "LSP References" })
+        require('telescope.builtin').lsp_references()
+      end, opts, { desc = "LSP References (Telescope)" })
+
 
       vim.keymap.set("n", "<leader>vrn", function()
         vim.lsp.buf.rename()

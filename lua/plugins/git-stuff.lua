@@ -20,6 +20,10 @@ return {
 			require("gitsigns").setup()
 			vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
 			vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
+
+      -- conflict
+      vim.keymap.set("n", "ge", "<cmd>diffget //2<CR>", {})
+      vim.keymap.set("n", "gu", "<cmd>diffget //3<cr>", {})
 		end,
 	},
 }

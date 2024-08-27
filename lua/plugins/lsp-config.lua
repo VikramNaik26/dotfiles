@@ -40,6 +40,7 @@ return {
         lspconfig.tailwindcss.setup({
           capabilities = capabilities,
         })
+        --UPDATED
         lspconfig.jdtls.setup({
           cmd = { 'C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/bin/jdtls.bat' },
           capabilities = capabilities,
@@ -59,8 +60,8 @@ return {
                 configuration = {
                   runtimes = {
                     {
-                      name = "JavaSE-22",
-                      path = "C:/Users/26vik/Downloads/jdk-22_windows-x64_bin/jdk-22.0.2",
+                      name = "JavaSE-21",
+                      path = "C:/Program Files/Java/jdk-21/bin",
                     },
                   },
                 },
@@ -184,10 +185,12 @@ return {
         "tflint",
         "pylsp",
         "dockerls",
+        -- "astro",
         "bashls",
         "marksman",
         "cucumber_language_server",
         "prismals",
+        -- "java_language_server"
         -- "solargraph",
       },
       handlers = {

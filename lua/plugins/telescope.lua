@@ -36,6 +36,7 @@ return {
             "%.next",
             ".settings/",
             ".metadata/",
+            "vendor",
             "target/",
             ".class$",
             "dist/",

@@ -40,6 +40,14 @@ return {
         lspconfig.tailwindcss.setup({
           capabilities = capabilities,
         })
+
+        -- lspconfig.intelephense.setup({
+        --   capabilities = capabilities,
+        --   filetypes = { "php", "blade" },
+        --   root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
+        --   cmd = { "intelephense", "--stdio" },
+        -- })
+
         --UPDATED
         lspconfig.jdtls.setup({
           cmd = { 'C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/bin/jdtls.bat' },
@@ -190,6 +198,7 @@ return {
         "marksman",
         "cucumber_language_server",
         "prismals",
+        "intelephense"
         -- "java_language_server"
         -- "solargraph",
       },

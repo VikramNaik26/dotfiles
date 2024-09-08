@@ -48,57 +48,30 @@ return {
         --   cmd = { "intelephense", "--stdio" },
         -- })
 
-        --UPDATED
+        local home = os.getenv("USERPROFILE")
+        local jdtls_dir = home .. "/AppData/Local/nvim-data/mason/packages/jdtls"
+
         lspconfig.jdtls.setup({
-          cmd = { 'C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/bin/jdtls.bat' },
+          cmd = {
+            'java',
+            '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+            '-Dosgi.bundles.defaultStartLevel=4',
+            '-Declipse.product=org.eclipse.jdt.ls.core.product',
+            '-Dlog.protocol=true',
+            '-Dlog.level=ALL',
+            '-Xms1g',
+            '--add-modules=ALL-SYSTEM',
+            '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+            '-jar', vim.fn.glob(jdtls_dir .. '/plugins/org.eclipse.equinox.launcher_*.jar'),
+            '-configuration', jdtls_dir .. '/config_win',
+            '-data', home .. '/.cache/jdtls-workspace',
+            '-javaagent:', jdtls_dir .. '/lombok.jar',
+            -- '-Xbootclasspath/a:', jdtls_dir .. '/lombok.jar',
+          },
           capabilities = capabilities,
-          init_options = {
-            jvm_args = {
-              '-Dlog.level=ALL',
-              '-Dlog.protocol=true',
-              '-configuration', 'C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/config_win',
-              '-javaagent:C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/lombok.jar',
-              '-Xbootclasspath/a:C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/lombok.jar'
-            },
-            settings = {
-              java = {
-                codeGeneration = {
-                  useBlocks = true,
-                },
-                configuration = {
-                  runtimes = {
-                    {
-                      name = "JavaSE-21",
-                      path = "C:/Program Files/Java/jdk-21/bin",
-                    },
-                  },
-                },
-              },
-            },
-          }
         })
 
-        -- -- java
-        -- lspconfig.jdtls.setup({
-        --   capabilities = capabilities,
-        --   cmd = {
-        --     'java',
-        --     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        --     '-Dosgi.bundles.defaultStartLevel=4',
-        --     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        --     '-Dlog.protocol=true',
-        --     '-Dlog.level=ALL',
-        --     '-Xms1g',
-        --     '--add-modules=ALL-SYSTEM',
-        --     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-        --     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-        --     '-jar',
-        --     'C:/Users/YourUsername/AppData/Local/nvim-data/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar',
-        --     '-configuration', 'C:/Users/26vik/AppData/Local/nvim-data/mason/packages/jdtls/config_win',
-        --     '-data', 'C:/Users/26vik/.cache/jdtls-workspace',
-        --     '-javaagent:C:/Users/26vik/.config/nvim/lombok.jar',
-        --   },
-        -- })
       end,
     }, -- Required
     {  -- Optional
